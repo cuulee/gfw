@@ -190,8 +190,8 @@ define([
           });
         });
 
-        it('does not set a threshold', function() {
-          expect(this.method({}).thresh).toBeUndefined();
+        it('defaults to a threshold of 30', function() {
+          expect(this.method({}).thresh).toEqual(30);
         });
       });
 
