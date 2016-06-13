@@ -52,6 +52,14 @@ textarea {
     }
   }
 
+  > h3 {
+    color: $dark;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
   textarea {
     height: 182px;
     max-width: 100%;
@@ -107,8 +115,8 @@ textarea {
 .radio-box {
   @include clearfix();
   @include display-flex();
-  @include justify-content(center);
-  padding: 15px 0;
+  @include justify-content(flex-start);
+  padding: 0 0 15px;
 
   .custom-radio {
     margin: 0 0 0 20px;
@@ -124,6 +132,9 @@ textarea {
     padding-left: 25px;
     line-height: 28px;
     cursor: pointer;
+    top: 0;
+    width: 100%;
+    left: 0;    
 
     span{
       position: absolute;
@@ -186,6 +197,9 @@ textarea {
     padding-left: 25px;
     line-height: 28px;
     cursor: pointer;
+    top: 0;
+    width: 100%;
+    left: 0;    
 
     span{
       position: absolute;
