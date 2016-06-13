@@ -50,6 +50,14 @@ textarea {
     &.-has-hint {
       top: 1px;
     }
+
+    &.error {
+      position: relative;
+      text-transform: none;
+      top: 0;
+      color: $red;
+      font-weight: 300;      
+    }
   }
 
   > h3 {

@@ -48,7 +48,8 @@
     "js-cookie": "~2.1.0",
     "bluebird": "~3.1.1",
     "turf": "~2.0.2",
-    "lory": "^2.1.0"
+    "lory": "^2.1.0",
+    "jquery-validation": "^1.15.0"
   },
   "resolutions": {
     "jquery": "1.11.1"

@@ -38,6 +38,7 @@ paths:
   picker: "pickadate/lib/picker"
   pickadate: "pickadate/lib/picker.date"
   cookie: "js-cookie/src/js.cookie"
+  jquery_validation: "jquery-validation/dist/jquery.validate"
 
   #countries
   scrollit: "ScrollIt.js/scrollIt"
@@ -135,3 +136,9 @@ shim:
     deps:
       - "jquery"
     exports: "jquery_fileupload"
+
+  jquery_validation:
+    deps:
+      - "jquery"
+    exports: "jquery_validation"
+

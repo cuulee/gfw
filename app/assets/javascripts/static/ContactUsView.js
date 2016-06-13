@@ -5,8 +5,9 @@ define([
   'jquery',
   'backbone',
   'mps',
-  'chosen'
-], function($,Backbone,mps,chosen) {
+  'chosen',
+  'jquery_validation'
+], function($,Backbone,mps,chosen,jquery_validation) {
 
   'use strict';
 
@@ -65,9 +66,11 @@ define([
       this.cache();
       this.listeners();
       this.renderChosen();
+      this.validateForm();
     },
 
     cache: function() {
+    	this.$contactForm = this.$el.find('#contact-form');
     	this.$contactMessage = this.$el.find('#contact-message');
     	this.$contactTopic = this.$el.find('#contact-topic');
     	this.$select = this.$el.find('.chosen-select');
@@ -86,6 +89,45 @@ define([
         inherit_select_classes: true,
         no_results_text: "Oops, nothing found!"
       });
+    },
+
+    validateForm: function() {
+			this.$contactForm.validate({
+				ignore: ".ignore",
+				rules: {
+					// no quoting necessary
+					'contact-email': {
+						required: true,
+						email: true
+					},
+					'contact-topic': {
+						required: true,
+					},
+					'contact-message': {
+						required: true,
+						minlength: 20,
+					},
+
+				},
+
+				messages: {
+			    'contact-email': {
+			      required: "We need your email address to contact you",
+			      email: "Your email address must be in the format of name@domain.com"
+			    },
+					'contact-topic': {
+						select: 'You must select a topic'
+					},
+			    'contact-message': {
+			      required: "This field is required",
+			      minlength: jQuery.validator.format("At least {0} characters required!")
+			    }			    
+			  },
+
+			  submitHandler: function(form) {
+			  	return false;
+			  }
+			});
     },
 
     /**
