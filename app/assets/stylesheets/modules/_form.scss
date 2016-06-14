@@ -11,7 +11,7 @@ textarea {
   border: 1px solid $border;
   padding: 10px;
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 4px;
   outline: none;
   &:focus {
@@ -188,10 +188,10 @@ textarea {
 .checkbox-box {
   @include clearfix();
   @include display-flex();
-  @include justify-content(center);
-  padding: 15px 0;
+  @include justify-content(flex-start);
+  padding: 0 0 15px;
 
-  .custom-radio {
+  .custom-checkbox {
     margin: 0 0 0 20px;
     &:first-child {
       margin: 0;
