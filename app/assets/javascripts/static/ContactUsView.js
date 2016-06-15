@@ -26,42 +26,34 @@ define([
 					'report-a-bug-or-error-on-gfw': {
 						name: 'Report a bug or error on GFW',
 						placeholder: 'Explain the bug or error and tell us where on the website you encountered it. What browser (e.g., Chrome version 50.0.2661.94 m) and operating system (e.g., Windows 8.1) do you use?',
-						emailTo: 'gfw@wri.org'
 					},
 					'provide-feedback': {
 						name: 'Provide feedback',
 						placeholder: 'Tell us about your experience with GFW! Examples: How can we improve GFW? Why did you visit GFW? How do you use GFW? If and how is the information provided by GFW useful for your work? Are there any additional features and/or data that would be useful?  Was anything confusing or difficult to use?  Etc...',
-						emailTo: 'gfw@wri.org'					
 					},
 					'media-request': {
 						name: 'Media request',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfwmedia@wri.org'						
 					},
 					'data-related-inquiry': {
 						name: 'Data related inquiry',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfwdata@wri.org'						
 					},
 					'gfw-commodities-inquiry': {
 						name: 'GFW Commodities inquiry',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfwcommodities@wri.org'						
 					},
 					'gfw-fires-inquiry': {
 						name: 'GFW Fires inquiry',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfwfires@wri.org'						
 					},
 					'gfw-climate-inquiry': {
 						name: 'GFW Climate inquiry',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfwclimate@wri.org'						
 					},
 					'general-inquiry': {
 						name: 'General inquiry',
 						placeholder: 'How can we help you?',
-						emailTo: 'gfw@wri.org'						
 					},    		
     		}
     	}
@@ -75,7 +67,6 @@ define([
       this.listeners();
       this.renderChosen();
       this.validateContactForm();
-      this.validateNewsletterForm();
     },
 
     cache: function() {
@@ -87,7 +78,6 @@ define([
     	this.$contactForm = this.$el.find('#contact-form');
     	this.$contactTopic = this.$el.find('#contact-topic');
     	this.$contactMessage = this.$el.find('#contact-message');
-    	this.$contactEmailTo = this.$el.find('#contact-emailto');
 
     	// Newsletter
 			this.$newsletterForm = this.$el.find('#newsletter-form');    	
@@ -110,8 +100,10 @@ define([
     },
 
     validateContactForm: function() {
-			this.$contactForm.validate({
+			this.validator = this.$contactForm.validate({
 				ignore: ".ignore",
+				errorClass: '-error',
+				errorElement: 'p',
 				rules: {
 					// no quoting necessary
 					'contact-email': {
@@ -125,7 +117,6 @@ define([
 						required: true,
 						minlength: 20,
 					},
-
 				},
 
 				messages: {
@@ -146,72 +137,49 @@ define([
 					var formData = _.object($(form).serializeArray().map(function(v) {
 						return [v.name, v.value];
 					}));
-					console.log(formData);
 
-					// Send via ajax the data needed...where?
-					if (true) {
-						this.model.set('step', 1)
-					} else {
+					$.ajax({
+						url: window.gfw.config.GFW_API_HOST + '/emails',
+						type: 'POST',
+						data: JSON.stringify(formData),
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
 
-					}
+						success: function(data) {
+							mps.publish('Notification/open', ['notification-contact-us-success'])
+							this.model.set('step', 1)
+						}.bind(this),
+
+						error: function() {
+							mps.publish('Notification/open', ['notification-contact-us-error'])
+						}.bind(this),
+					})
+
+					// If you want to test it locally without sending a mail to WRI
+					// if (true) {
+					// 	mps.publish('Notification/open', ['notification-contact-us-success'])
+					// 	this.model.set('step', 1);
+					// } else {
+					// 	mps.publish('Notification/open', ['notification-contact-us-error'])
+					// }
 			  	return false;
-			  }.bind(this)
-			});
-    },
-
-    validateNewsletterForm: function() {
-			this.$newsletterForm.validate({
-				ignore: ".ignore",
-				rules: {
-					// no quoting necessary
-					'newsletter-email': {
-						required: true,
-						email: true
-					},
-					'newsletter-name': {
-						required: true,
-					},
-					'newsletter-city': {
-						required: true,
-						minlength: 20,
-					},
-					'newsletter-country': {
-						required: true,
-						minlength: 20,
-					},
-
+			  }.bind(this),
+			
+				errorPlacement: function(error, element) {
+					var $field = $(element).parents('.field');
+					$field.append(error);
 				},
 
-				messages: {
-			    'newsletter-email': {
-			      required: "This field is required",
-			      email: "Your email address must be in the format of name@domain.com"
-			    },
-					'newsletter-name': {
-			      required: "This field is required",
-					},
-			    'newsletter-city': {
-			      required: "This field is required",
-			    },		    
-			    'newsletter-country': {
-			      required: "This field is required",
-			    }			    
-			  },
+				highlight: function(element,error) {
+					var $field = $(element).parents('.field');
+					$field.find('label').addClass(error);
+				},
 
-			  submitHandler: function(form) {
-					var formData = _.object($(form).serializeArray().map(function(v) {
-						return [v.name, v.value];
-					}));
-					console.log(formData);
+				unhighlight: function(element,error) {
+					var $field = $(element).parents('.field');
+					$field.find('label').removeClass(error);
+				}
 
-					// Send via ajax the data needed...where?
-					if (true) {
-						this.model.set('step', 2);
-					} else {
-
-					}
-			  	return false;
-			  }.bind(this)
 			});
     },
 
@@ -221,10 +189,7 @@ define([
     topicChanged: function() {
     	var topic = this.model.get('topic');
     	var placeholder = this.model.get('topics')[topic]['placeholder'];
-    	var emailTo = this.model.get('topics')[topic]['emailTo'];
-
     	this.$contactMessage.attr('placeholder', placeholder);
-    	this.$contactEmailTo.val(emailTo);
     },
 
     stepChanged: function() {
@@ -240,6 +205,7 @@ define([
     onTopicChange: function(e) {
       e && e.preventDefault();
       var topic = $(e.currentTarget).val();
+      this.validator.element('#'+$(e.currentTarget).attr('id'));
       this.model.set('topic', topic);
     },
 

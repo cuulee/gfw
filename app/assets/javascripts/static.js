@@ -23,9 +23,10 @@ require([
   'views/SidebarNavView',
   'views/InterestingView',
   'views/SourceMobileFriendlyView',
+  'views/NotificationsView',
   '_string'
 ], function($, _, Class, Backbone, mps, RouterStatic, CarrouselView, StoriesKeepView, VideoView, SearchView, FeedbackView, ApplicationsNavView, ApplicationsGridView, ApplicationsModalView,
-            GalleryView, ContactUsView, HeaderView, FooterView, SidebarNavView, InterestingView, SourceMobileFriendlyView) {
+            GalleryView, ContactUsView, HeaderView, FooterView, SidebarNavView, InterestingView, SourceMobileFriendlyView, NotificationsView) {
   'use strict';
 
   var LandingPage = Class.extend({
@@ -68,6 +69,7 @@ require([
       new HeaderView();
       new FooterView();
       new SourceMobileFriendlyView();
+      new NotificationsView();
 
       //static
       new SidebarNavView();
