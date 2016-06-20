@@ -145,6 +145,7 @@ define([
   'map/views/layers/MexForestSubCatLayer',
   'map/views/layers/Places2WatchLayer',
   'map/views/layers/MysWoodFiberSabahLayer',
+  'map/views/layers/MysPASabahLayer',
   // high resolution maps
   'map/views/layers/UrthecastLayer',
   // Layer dialog templates
@@ -304,6 +305,7 @@ define([
   MexForestSubCatLayer,
   Places2WatchLayer,
   MysWoodFiberSabahLayer,
+  MysPASabahLayer,
   //highres layers
   UrthecastLayer,
   // Layer dialog templates
@@ -778,6 +780,9 @@ define([
     },
     mys_wood_fiber_sabah: {
       view: MysWoodFiberSabahLayer
+    },
+    mys_proteced_areas_sabah: {
+      view:  MysPASabahLayer
     },
     nothing: {
     }
