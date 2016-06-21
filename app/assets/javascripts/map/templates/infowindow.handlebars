@@ -375,6 +375,46 @@
           <h4>Cloud coverage:</h4>
           <p>{{content.data.cloud_coverage}}%</p>
         {{/if}}
+        {{#if content.data.alerts_last_semester}}
+          <h4 style="width: 100%">Glad alerts in the last six months:</h4>
+          <p style="width:200px;height:100px;" id="graphSlope"></p>
+        {{/if}}
+        {{#if content.data.slope_semester}}
+          <h4>Glad alerts slope trend for last six months:</h4>
+          <p id="slopeTotal">{{content.data.slope_semester}}</p>
+        {{/if}}
+        {{#if content.data.validity}}
+          <h4>Validity:</h4>
+          <p>{{content.data.validity}}</p>
+        {{/if}}
+        {{#if content.data.avg_score}}
+          <h4>Average score:</h4>
+          <p>{{content.data.avg_score}}</p>
+        {{/if}}
+        {{#if content.data.total_alerts}}
+          <h4>Total alerts:</h4>
+          <p>{{content.data.total_alerts}}</p>
+        {{/if}}
+        {{#if content.data.tipo}}
+          <h4>Tipo:</h4>
+          <p>{{content.data.tipo}}</p>
+        {{/if}}
+        {{#if content.data.tipo_solic}}
+          <h4>Applicant type:</h4>
+          <p>{{content.data.tipo_solic}}</p>
+        {{/if}}
+        {{#if content.data.ano}}
+          <h4>Year:</h4>
+          <p>{{content.data.ano}}</p>
+        {{/if}}
+        {{#if content.data.floresta}}
+          <h4>National Forest:</h4>
+          <p>{{content.data.floresta}}</p>
+        {{/if}}
+        {{#if content.data.umf}}
+          <h4>UMF:</h4>
+          <p>{{content.data.umf}}</p>
+        {{/if}}
       </div>
     </div>
   </div>

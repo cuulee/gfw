@@ -146,6 +146,9 @@ define([
   'map/views/layers/Places2WatchLayer',
   'map/views/layers/MysWoodFiberSabahLayer',
   'map/views/layers/MysPASabahLayer',
+  'map/views/layers/MexicoPaymentsLayer',
+  'map/views/layers/MexLandRightsLayer',
+  'map/views/layers/BraLoggingLayer',
   // high resolution maps
   'map/views/layers/UrthecastLayer',
   // Layer dialog templates
@@ -306,6 +309,9 @@ define([
   Places2WatchLayer,
   MysWoodFiberSabahLayer,
   MysPASabahLayer,
+  MexicoPaymentsLayer,
+  MexLandRightsLayer,
+  BraLoggingLayer,
   //highres layers
   UrthecastLayer,
   // Layer dialog templates
@@ -783,6 +789,15 @@ define([
     },
     mys_proteced_areas_sabah: {
       view:  MysPASabahLayer
+    },
+    mexican_psa: {
+      view:  MexicoPaymentsLayer
+    },
+    mex_land_rights: {
+      view:  MexLandRightsLayer
+    },
+    bra_logging: {
+      view:  BraLoggingLayer
     },
     nothing: {
     }
