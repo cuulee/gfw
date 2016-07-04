@@ -154,6 +154,7 @@ define([
   'map/views/layers/MysPASabahLayer',
   'map/views/layers/BraLandcoverLayer',
   'map/views/layers/PerPALayer',
+  'map/views/layers/MexLandCoverLayer',
   // high resolution maps
   'map/views/layers/UrthecastLayer',
   // Layer dialog templates
@@ -322,6 +323,7 @@ define([
   MysPASabahLayer,
   BraLandcoverLayer,
   PerPALayer,
+  MexLandCoverLayer,
   //highres layers
   UrthecastLayer,
   // Layer dialog templates
@@ -823,6 +825,9 @@ define([
     },
     per_protected_areas: {
       view:  PerPALayer
+    },
+    mex_land_cover: {
+      view:  MexLandCoverLayer
     },
     nothing: {
     }
