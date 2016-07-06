@@ -302,11 +302,8 @@ define([
   CanIntactForestLayer,
   MexForestCatLayer,
   MexForestSubCatLayer,
-<<<<<<< HEAD
-=======
   Places2WatchLayer,
   MysWoodFiberSabahLayer,
->>>>>>> be41bf4... New Layer: Sabah timer plantations licenses
   //highres layers
   UrthecastLayer,
   // Layer dialog templates
@@ -776,16 +773,12 @@ define([
     mex_forest_zoning_subcat: {
       view:  MexForestSubCatLayer
     },
-<<<<<<< HEAD
-=======
     places_to_watch: {
       view:  Places2WatchLayer
     },
     mys_wood_fiber_sabah: {
       view: MysWoodFiberSabahLayer
     },
-    
->>>>>>> be41bf4... New Layer: Sabah timer plantations licenses
     nothing: {
     }
   };
