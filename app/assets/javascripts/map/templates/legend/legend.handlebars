@@ -10,6 +10,19 @@
         {{this.country.name}} data
       </h2>
 
+    {{#if this.more}}
+      <li class="category">
+        <div>
+          {{#if this.more.is_idn}}
+            <a href="{{this.more.url}}" target="_blank" class="legend-link">WRI in Indonesia &#10148;</a>
+          {{else}}
+            <a href="{{this.more.url}}" target="_blank" class="legend-link">Visit Forest Atlas &#10148;</a>
+          {{/if}}      
+        </div>
+      </li>
+    {{/if}}
+
+    {{#if categoriesIso}}
       {{#each categoriesIso}}
         <li class="category {{#if this.closed}}closed{{/if}}">
           {{#each this}}
