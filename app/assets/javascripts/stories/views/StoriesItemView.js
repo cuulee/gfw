@@ -1,10 +1,10 @@
 define([
   'backbone', 'handlebars', 'underscore',
-  'stories/utilities/story',
+  'stories/helpers/StoryHelper',
   'text!stories/templates/story_item.handlebars'
 ], function(
   Backbone, Handlebars, _,
-  StoryUtilities,
+  StoryHelper,
   tpl
 ) {
 
@@ -21,7 +21,7 @@ define([
     },
 
     render: function() {
-      var story = StoryUtilities.decorateWithIconUrl(
+      var story = StoryHelper.decorateWithIconUrl(
         this.story.toJSON());
       this.$el.html(this.template({
         story: story,

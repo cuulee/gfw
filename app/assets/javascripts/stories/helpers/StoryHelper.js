@@ -4,7 +4,7 @@ define([
 
   'use strict';
 
-  return {
+  var StoryHelper = {
     decorateWithIconUrl: function(story) {
       var media = story.media;
       if (media.length > 0 && !_.isEmpty(media[media.length-1].previewUrl)) {
@@ -17,5 +17,7 @@ define([
       return story;
     }
   };
+
+  return StoryHelper;
 
 });

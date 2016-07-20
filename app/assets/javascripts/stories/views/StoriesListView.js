@@ -5,8 +5,8 @@ define([
   'text!stories/templates/stories.handlebars'
 ], function(
   Backbone, Handlebars, simplePagination,
-  Stories,
-  StoryView, StoriesPaginationView,
+  StoriesCollection,
+  StoriesItemView, StoriesPaginationView,
   tpl
 ) {
 
@@ -17,7 +17,7 @@ define([
     template: Handlebars.compile(tpl),
 
     initialize: function() {
-      this.stories = new Stories([], {perPage: 5});
+      this.stories = new StoriesCollection([], {perPage: 5});
       this.stories.setPage(this.$el.data('page') || 1);
       this.listenTo(this.stories, 'sync', this.renderStories);
       this.listenTo(this.stories, 'sync', this.renderPaginationControls);
@@ -42,7 +42,7 @@ define([
       $storiesList.empty();
 
       this.stories.getPaginatedModels().forEach(function(story) {
-        var view = new StoryView({story: story});
+        var view = new StoriesItemView({story: story});
         $storiesList.append(view.render().el);
       }.bind(this));
 

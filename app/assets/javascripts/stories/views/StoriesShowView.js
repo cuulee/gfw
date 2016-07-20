@@ -6,7 +6,7 @@ define([
   'text!stories/templates/youtubeEmbed.handlebars', 'text!stories/templates/imageEmbed.handlebars'
 ], function(
   mps, Backbone, Handlebars, _,
-  Story,
+  StoryModel,
   InterestingView, CarrouselStoriesView, MoreStoriesView,
   tpl, youtubeTpl, imageTpl
 ) {
@@ -44,7 +44,7 @@ define([
 
     initialize: function(options) {
       var storyId = options.id;
-      this.story = new Story({id: storyId});
+      this.story = new StoryModel({id: storyId});
       this.listenTo(this.story, 'change', this.render);
       this.story.fetch();
     },

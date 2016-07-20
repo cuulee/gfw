@@ -1,12 +1,12 @@
 define([
   'jquery', 'backbone', 'handlebars',
   'stories/collections/StoriesCollection',
-  'stories/utilities/story',
+  'stories/helpers/StoryHelper',
   'text!stories/templates/latest_stories.handlebars'
 ], function(
   $, Backbone, Handlebars,
   Stories,
-  StoryUtilities,
+  StoryHelper,
   tpl
 ) {
 
@@ -31,7 +31,7 @@ define([
     render: function() {
       var stories = this.stories.toJSON().slice(0,4);
       stories = stories.map(function(story) {
-        return StoryUtilities.decorateWithIconUrl(story);
+        return StoryHelper.decorateWithIconUrl(story);
       });
 
       this.$el.html(this.template({stories: stories}));

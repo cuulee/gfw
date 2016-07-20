@@ -5,7 +5,7 @@ define([
   'text!stories/templates/new_story.handlebars'
 ], function(
   Class, $, Backbone, mps, Handlebars, jquery_fileupload, moment, _,
-  Story, Media,
+  StoryModel, MediaModel,
   LatestStoriesView,
   tpl
 ) {
@@ -72,7 +72,7 @@ define([
     initialize: function() {
       this.sourceDrag = undefined;
 
-      this.story = new Story();
+      this.story = new StoryModel();
       this.listenTo(this.story, 'change:lat change:lng', this.zoomToStory);
 
       this.validator = new StoryFormValidator();
@@ -109,7 +109,7 @@ define([
     },
 
     _addVideoThumbnail: function(url) {
-      var media = new Media({embedUrl: url});
+      var media = new MediaModel({embedUrl: url});
       this.story.addMedia(media);
 
       var vidID  = this._getVideoID(url),

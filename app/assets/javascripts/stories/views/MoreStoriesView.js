@@ -1,12 +1,12 @@
 define([
   'backbone', 'handlebars',
   'stories/collections/StoriesCollection',
-  'stories/utilities/story',
+  'stories/helpers/StoryHelper',
   'text!stories/templates/more_stories.handlebars'
 ], function(
   Backbone, Handlebars,
-  Stories,
-  StoryUtilities,
+  StoriesCollection,
+  StoryHelper,
   tpl
 ) {
 
@@ -34,7 +34,7 @@ define([
     template: Handlebars.compile(tpl),
 
     initialize: function() {
-      this.stories = new Stories([], {perPage: 5});
+      this.stories = new StoriesCollection([], {perPage: 5});
       this.listenTo(this.stories, 'sync', this.render);
       this.stories.fetch();
 
@@ -44,7 +44,7 @@ define([
     render: function() {
       var stories = getRandomStories(this.stories.toJSON());
       stories = stories.map(function(story) {
-        return StoryUtilities.decorateWithIconUrl(story);
+        return StoryHelper.decorateWithIconUrl(story);
       });
 
       this.$el.html(this.template({stories: stories}));
