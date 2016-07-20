@@ -8,7 +8,7 @@ define([
 
   'use strict';
 
-  var Story = Backbone.Model.extend({
+  var StoryModel = Backbone.Model.extend({
     urlRoot: window.gfw.config.GFW_API_HOST_NEW_API + '/story/',
 
     defaults: {
@@ -55,6 +55,6 @@ define([
     }
   });
 
-  return Story;
+  return StoryModel;
 
 });

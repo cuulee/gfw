@@ -5,7 +5,7 @@ define([
   'views/NotificationsView'
 ], function(
   $, Backbone, _,
-  User,
+  UserModel,
   UserFormView, StoriesListView, SubscriptionListView, LoginView,
   NotificationsView) {
 
@@ -37,7 +37,7 @@ define([
     },
 
     checkLoggedIn: function() {
-      this.user = new User();
+      this.user = new UserModel();
       return this.user.fetch();
     },
 

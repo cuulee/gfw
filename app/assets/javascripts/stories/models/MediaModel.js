@@ -4,7 +4,7 @@ define([
 
   'use strict';
 
-  var Media = Backbone.Model.extend({
+  var MediaModel = Backbone.Model.extend({
 
     defaults: {
       order: 0
@@ -12,6 +12,6 @@ define([
 
   });
 
-  return Media;
+  return MediaModel;
 
 });

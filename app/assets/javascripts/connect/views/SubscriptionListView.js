@@ -1,9 +1,9 @@
 define([
   'jquery', 'backbone', 'handlebars', 'underscore', 'mps', 'map/utils', 'simplePagination',
-  'connect/collections/Subscriptions',
+  'connect/collections/SubscriptionsCollection',
   'connect/views/SubscriptionListItemView',
   'text!connect/templates/subscriptionList.handlebars'
-], function($, Backbone, Handlebars, _, mps, utils, simplePagination, Subscriptions, SubscriptionListItemView, tpl) {
+], function($, Backbone, Handlebars, _, mps, utils, simplePagination, SubscriptionsCollection, SubscriptionListItemView, tpl) {
 
   'use strict';
 
@@ -20,7 +20,7 @@ define([
 
     initialize: function() {
       this.model = new SubscriptionListModel();
-      this.subscriptions = new Subscriptions();
+      this.subscriptions = new SubscriptionsCollection();
       this.listenTo(this.subscriptions, 'sync remove', this.render);
       this.subscriptions.fetch();
 

@@ -1,13 +1,13 @@
 define([
   'backbone',
   'moment',
-  'connect/models/Subscription'
-], function(Backbone, moment, Subscription) {
+  'connect/models/SubscriptionModel'
+], function(Backbone, moment, SubscriptionModel) {
 
   'use strict';
 
-  var Subscriptions = Backbone.Collection.extend({
-    model: Subscription,
+  var SubscriptionsCollection = Backbone.Collection.extend({
+    model: SubscriptionModel,
 
     url: window.gfw.config.GFW_API_HOST_NEW_API + '/subscriptions',
 

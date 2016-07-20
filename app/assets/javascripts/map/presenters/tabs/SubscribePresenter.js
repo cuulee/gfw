@@ -8,8 +8,8 @@ define([
   'mps',
   'map/presenters/PresenterClass',
   'map/models/UserModel',
-  'connect/models/Subscription',
-], function(_, mps, PresenterClass, User, Subscription) {
+  'connect/models/SubscriptionModel',
+], function(_, mps, PresenterClass, UserModel, SubscriptionModel) {
 
   'use strict';
 
@@ -25,7 +25,7 @@ define([
       this.view = view;
       this._super();
 
-      this.user = new User();
+      this.user = new UserModel();
       this.user.on('sync', this.render);
       this.user.fetch();
 
@@ -71,7 +71,7 @@ define([
       var params = _.pick(options,
         'iso', 'geostore', 'wdpaid', 'use', 'useid');
 
-      this.subscription = new Subscription({
+      this.subscription = new SubscriptionModel({
         datasets: [options.dataset],
         geostoreId: options.geostore,
         params: params

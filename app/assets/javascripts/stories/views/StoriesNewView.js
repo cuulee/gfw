@@ -1,10 +1,10 @@
 define([
-  'Class', 'jquery', 'backbone', 'mps', 'handlebars', 'jquery_fileupload', 'backbone.syphon', 'moment', 'underscore',
+  'Class', 'jquery', 'backbone', 'mps', 'handlebars', 'jquery_fileupload', 'moment', 'underscore',
   'stories/models/StoryModel', 'stories/models/MediaModel',
   'stories/views/LatestStoriesView',
   'text!stories/templates/new_story.handlebars'
 ], function(
-  Class, $, Backbone, mps, Handlebars, jquery_fileupload, BackboneSyphon, moment, _,
+  Class, $, Backbone, mps, Handlebars, jquery_fileupload, moment, _,
   Story, Media,
   LatestStoriesView,
   tpl
@@ -84,7 +84,7 @@ define([
       if ($(e.target).val().length == 0) {
         var removable = document.getElementById('videothumbnail');
         if (removable) {
-          removable.parentNode.removeChild(removable);  
+          removable.parentNode.removeChild(removable);
         }
       } else {
         this._addVideoThumbnail($(e.target).val());
@@ -103,7 +103,7 @@ define([
         } else {
           mps.publish('Notification/open', ['notif-not-a-correct-youtube-link']);
           return null;
-        }        
+        }
       }
       return null;
     },
@@ -117,7 +117,7 @@ define([
       if ($thumb.length > 0) {
         if (!!vidID) {
           $thumb.find('.inner_box').css('background-image','url('+ vidID +')');
-          $thumb.data('uploadId', 'VID-'+vidID);          
+          $thumb.data('uploadId', 'VID-'+vidID);
         } else {
           this.uploadsIds = _.without(this.uploadsIds, 'VID-'+this.oldvID);
           $("#story_uploads_ids").val(this.uploadsIds.join(","));
@@ -145,7 +145,7 @@ define([
                   $thumb.remove();
                 });
               }
-            }.bind(this));          
+            }.bind(this));
         }
       }
       this.oldvID = vidID;

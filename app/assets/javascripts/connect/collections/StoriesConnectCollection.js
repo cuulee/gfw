@@ -1,12 +1,12 @@
 define([
   'backbone', 'moment',
-  'connect/models/Story'
-], function(Backbone, moment, Story) {
+  'connect/models/StoryConnectModel'
+], function(Backbone, moment, StoryConnectModel) {
 
   'use strict';
 
-  var Stories = Backbone.Collection.extend({
-    model: Story,
+  var StoriesCollection = Backbone.Collection.extend({
+    model: StoryConnectModel,
 
     url: window.gfw.config.GFW_API_HOST_NEW_API + '/user/stories',
 
@@ -34,6 +34,6 @@ define([
 
   });
 
-  return Stories;
+  return StoriesCollection;
 
 });

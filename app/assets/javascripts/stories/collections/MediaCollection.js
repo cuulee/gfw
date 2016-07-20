@@ -1,12 +1,12 @@
 define([
   'backbone', 'underscore',
   'stories/models/MediaModel'
-], function(Backbone, _, Media) {
+], function(Backbone, _, MediaModel) {
 
   'use strict';
 
-  var Media = Backbone.Collection.extend({
-    model: Media,
+  var MediaCollection = Backbone.Collection.extend({
+    model: MediaModel,
 
     tail: function() {
       return _.last(this.sortBy('order'));
@@ -43,6 +43,6 @@ define([
 
   });
 
-  return Media;
+  return MediaCollection;
 
 });

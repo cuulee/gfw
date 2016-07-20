@@ -2,7 +2,7 @@ define([
   'Class', 'backbone', 'underscore', 'handlebars', 'mps',
   'map/models/UserModel',
   'text!connect/templates/userForm.handlebars'
-], function(Class, Backbone, _, Handlebars, mps, User, tpl) {
+], function(Class, Backbone, _, Handlebars, mps, UserModel, tpl) {
 
   'use strict';
 
@@ -47,7 +47,7 @@ define([
       options = options || {};
       this.isModal = options.isModal;
 
-      this.user = new User();
+      this.user = new UserModel();
       this.listenTo(this.user, 'sync', this.render);
       this.user.fetch();
 

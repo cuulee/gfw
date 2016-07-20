@@ -4,7 +4,7 @@ define([
 
   'use strict';
 
-  var Story = Backbone.Model.extend({
+  var StoryModel = Backbone.Model.extend({
     type: 'story',
 
     urlRoot: 'http://api-gateway.globalforestwatch.dev:8000/story',
@@ -31,6 +31,6 @@ define([
     }
   });
 
-  return Story;
+  return StoryModel;
 
 });

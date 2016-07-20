@@ -5,7 +5,7 @@ define([
 
   'use strict';
 
-  var Stories = Backbone.Collection.extend({
+  var StoriesCollection = Backbone.Collection.extend({
     model: Story,
 
     url: window.gfw.config.GFW_API_HOST_NEW_API + '/story/',
@@ -31,6 +31,6 @@ define([
     }
   });
 
-  return Stories;
+  return StoriesCollection;
 
 });

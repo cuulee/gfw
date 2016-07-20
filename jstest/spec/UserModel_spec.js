@@ -1,6 +1,6 @@
 define([
   'map/models/UserModel',
-], function(User) {
+], function(UserModel) {
 
   'use strict';
 
@@ -11,7 +11,7 @@ define([
       var user;
 
       beforeEach(function() {
-        user = new User();
+        user = new UserModel();
       });
 
       it('updates the email if the user has no email', function() {

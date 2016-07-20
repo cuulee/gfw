@@ -2,7 +2,7 @@ define([
   'backbone', 'jquery',
   'map/views/tabs/SubscribeView',
   'map/models/UserModel',
-], function(Backbone, $, SubscribeView, User) {
+], function(Backbone, $, SubscribeView, UserModel) {
 
   'use strict';
 
@@ -15,7 +15,7 @@ define([
           email = 'new@email.com';
 
       beforeEach(function() {
-        user = new User();
+        user = new UserModel();
         spyOn(user, 'save');
 
         window.ga = function() {};

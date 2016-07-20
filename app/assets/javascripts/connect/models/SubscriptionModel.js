@@ -52,7 +52,7 @@ define([
     }
   };
 
-  var Subscription = Backbone.Model.extend({
+  var SubscriptionModel = Backbone.Model.extend({
     type: 'subscription',
 
     urlRoot: window.gfw.config.GFW_API_HOST_NEW_API + '/subscriptions',
@@ -101,6 +101,6 @@ define([
     }
   });
 
-  return Subscription;
+  return SubscriptionModel;
 
 });

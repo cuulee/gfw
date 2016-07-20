@@ -3,7 +3,7 @@ define([
   'map/models/UserModel',
   'connect/views/UserFormView',
   'text!connect/templates/userFormModal.handlebars'
-], function(Backbone, Handlebars, mps, User, UserFormView, tpl) {
+], function(Backbone, Handlebars, mps, UserModel, UserFormView, tpl) {
 
   'use strict';
 
@@ -21,7 +21,7 @@ define([
     initialize: function() {
       this.render();
 
-      this.user = new User();
+      this.user = new UserModel();
       this.listenTo(this.user, 'sync', this.showIfNewUser);
       this.user.fetch();
     },

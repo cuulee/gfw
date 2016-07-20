@@ -1,11 +1,11 @@
 define([
   'jquery', 'backbone', 'handlebars', 'underscore', 'mps', 'map/utils', 'simplePagination',
-  'connect/collections/Stories',
+  'connect/collections/StoriesConnectCollection',
   'connect/views/StoriesListItemView',
   'text!connect/templates/storiesList.handlebars'
 ], function(
   $, Backbone, Handlebars, _, mps, utils, simplePagination,
-  Stories,
+  StoriesConnectCollection,
   StoriesListItemView,
   tpl
 ) {
@@ -24,7 +24,7 @@ define([
 
     initialize: function() {
       this.model = new StoriesListModel();
-      this.stories = new Stories();
+      this.stories = new StoriesConnectCollection();
       this.listenTo(this.stories, 'sync remove', this.render);
       this.stories.fetch();
 
