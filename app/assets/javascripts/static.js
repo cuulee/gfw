@@ -9,7 +9,6 @@ require([
   'mps',
   'static/RouterStatic',
   'static/CarrouselView',
-  'stories/views/StoriesIndexView',
   'static/VideoView',
   'static/SearchView',
   'static/FeedbackView',
@@ -23,7 +22,7 @@ require([
   'views/InterestingView',
   'views/SourceMobileFriendlyView',
   '_string'
-], function($, _, Class, Backbone, mps, RouterStatic, CarrouselView, StoriesIndexView, VideoView, SearchView, FeedbackView, ApplicationsNavView, ApplicationsGridView, ApplicationsModalView,
+], function($, _, Class, Backbone, mps, RouterStatic, CarrouselView, VideoView, SearchView, FeedbackView, ApplicationsNavView, ApplicationsGridView, ApplicationsModalView,
             GalleryView, HowToToggleView, HeaderView, FooterView, TermsView, SidebarNavView, InterestingView, SourceMobileFriendlyView) {
   'use strict';
 
@@ -72,7 +71,6 @@ require([
       new SidebarNavView();
       new CarrouselView();
       new InterestingView();
-      new StoriesIndexView({el: '#storiesKeepView'});
       new VideoView();
       new SearchView();
       new FeedbackView();
