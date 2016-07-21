@@ -4,7 +4,7 @@ define([
   $, Backbone, _, mps
 ) {
 
-  var StoriesItemView = Backbone.View.extend({
+  var StoriesPaginationView = Backbone.View.extend({
 
     initialize: function(options) {
       this.stories = options.stories;
@@ -49,6 +49,6 @@ define([
 
   });
 
-  return StoriesItemView;
+  return StoriesPaginationView;
 
 });

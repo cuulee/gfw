@@ -1,10 +1,17 @@
+/**
+ * The UserModel model.
+ *
+ * @return UserModel (extends Backbone.Model).
+ */
 define([
- 'backbone', 'underscore'
+ 'backbone', 
+ 'underscore'
 ], function(Backbone, _) {
 
   'use strict';
 
   var UserModel = Backbone.Model.extend({
+    
     urlRoot: window.gfw.config.GFW_API_HOST_NEW_API + '/user',
 
     setEmailIfEmpty: function(email) {

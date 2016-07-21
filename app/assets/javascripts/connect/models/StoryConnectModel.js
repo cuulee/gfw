@@ -1,10 +1,17 @@
+/**
+ * The UserModel model.
+ *
+ * @return UserModel (extends Backbone.Model).
+ */
+
 define([
  'backbone'
 ], function(Backbone) {
 
   'use strict';
 
-  var StoryModel = Backbone.Model.extend({
+  var StoryConnectModel = Backbone.Model.extend({
+
     type: 'story',
 
     urlRoot: 'http://api-gateway.globalforestwatch.dev:8000/story',
@@ -31,6 +38,6 @@ define([
     }
   });
 
-  return StoryModel;
+  return StoryConnectModel;
 
 });
