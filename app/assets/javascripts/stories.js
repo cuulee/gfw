@@ -1,16 +1,20 @@
+/**
+ * Application entry point.
+ */
 require([
+  'jquery',
+  'underscore',
+  'Class',
   'backbone',
-  'stories/handlebarsHelpers',
-  'views/HeaderView', 
-  'views/FooterView',
-  'stories/routers/StoriesRouter'
-], function(
-  Backbone,
-  handlebarsHelpers,
-  HeaderView, FooterView,
-  StoriesRouter
-) {
-
+  'mps',
+  'jqueryujs',
+  'jqueryui',
+  'jquery_migrate',
+  'jquery_fileupload',
+  'geojson',
+  'handlebars',
+  '_string',
+], function($, _, Class, Backbone, mps, jqueryujs, jqueryui, jquery_migrate, jquery_fileupload, geojson, Handlebars) {
   'use strict';
 
   var StoriesPage = Class.extend({
@@ -18,21 +22,29 @@ require([
     $el: $('body'),
 
     init: function() {
-      var router = new StoriesRouter();
-      handlebarsHelpers.register();
-      this._initApp();
+      this._initViews();
     },
 
     /**
-     * Initialize the map by starting the history.
+     * Initialize Landing Views.
      */
-    _initApp: function() {
-      if (!Backbone.History.started) {
-        Backbone.history.start({pushState: true});
-      }
-    },
+    _initViews: function() {
+      //shared
+      new HeaderView();
+      new FooterView();
+      new InterestingView();
+      new SourceWindowView();
+      new SourceMobileFriendlyView();
+      new NotificationsView();
 
+      new StoriesListView();
+      new StoriesNewView();
+      new StoriesLatestView();
+      new CarrouselStoriesView();
+
+    }
   });
 
   new StoriesPage();
+
 });
