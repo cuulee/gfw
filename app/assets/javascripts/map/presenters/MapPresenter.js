@@ -17,7 +17,8 @@ define([
     defaults: {
       threshold: null,
       layers: null,
-      dont_scroll: null
+      dont_scroll: null,
+      lang: null
     }
   });
 
@@ -106,6 +107,10 @@ define([
       if (!!place.params.referral) this._publishReferral(place.params.referral);
       this._updateStatusModel(place.params);
       this._setLayers(place.layerSpec, place.params);
+
+      if (!!place.params.lang) {
+        this.status.set('lang', place.params.lang)
+      }
 
       // Very weird my friend (if if if if if if)
       if ((!!place.params.iso && !!place.params.iso.country && place.params.iso.country == 'ALL') && ! !!place.params.wdpaid && ! !!place.params.geojson) {
@@ -225,6 +230,7 @@ define([
       var p = {};
       var mapCenter = this.view.getCenter();
 
+      p.lang = this.status.get('lang');
       p.name = 'map';
       p.zoom = this.view.map.getZoom();
       p.lat = mapCenter.lat;

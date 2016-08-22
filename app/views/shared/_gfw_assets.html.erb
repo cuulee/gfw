@@ -2,7 +2,20 @@
   window.liveSettings = {
     picker: '#transifexTranslateElement',
     api_key: "9eda410a7db74687ba40771c56abd357",
-    detectlang: false
+    detectlang: function() {
+      var getParam = function (name){
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null )
+          return null;
+        else
+          return results[1];
+      }      
+      console.log(getParam('lang'))
+      return getParam('lang');
+    }
 
     // LIVE SETTINGS OPTIONS
     // api_key: "<key>",
