@@ -9,8 +9,8 @@ define([], function() {
     zh: '中文',
     fr: 'Français',
     id: 'Bahasa Indonesia',
-    pt_BR: 'Português',
-    es_MX: 'Español'
+    pt: 'Português',
+    es: 'Español'
   };
 
   var languagesHelper = {
